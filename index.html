@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="xl:px-52 lg:px-28 lg:pt-10 font-kumbhSans box-border ">
+  <div id="overlay" class="hidden bgBlack absolute top-0 left-0 z-40 w-full h-full"></div>
+  <div id="desktopLightBoxActive" class="desktopLightBoxActive hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] flex-col gap-5 z-50">
+    <button id="closeButtonDesktopLightBox" class="self-end"><img class="w-5 brightness-[5]" src="images/icon-close.svg" alt=""></button>
+    <figure id="mainThumbnailActive" class="relative">
+      <button id="nextButtonActive" class="absolute top-1/2 -right-[22px] -translate-y-1/2 w-11 h-11 bg-white rounded-full flex justify-center items-center"><img src="images/icon-next.svg" alt="next button active"></button>
+      <img id="desktopCurrentImageActive" src="images/image-product-1.jpg" class="rounded-xl" alt="desktop current image active">
+      <button id="previousButtonActive" class="absolute top-1/2 -left-[22px] -translate-y-1/2 w-11 h-11 bg-white rounded-full flex justify-center items-center"><img src="images/icon-previous.svg" alt="previous button active"></button>
+    </figure>
+    <div id="thumbnailsActive" class="flex gap-7 [&>figure]:border-[3px] [&>figure]:border-[transparent] [&>figure]:border-solid [&>figure]:cursor-pointer [&>figure>img]:rounded-xl">
+      <figure id="thumbnailOneActive" class="active"><img src="images/image-product-1-thumbnail.jpg" alt="product 1 thumbnail"></figure>
+      <figure id="thumbnailTwoActive"><img src="images/image-product-2-thumbnail.jpg"  alt="product 2 thumbnail"></figure>
+      <figure id="thumbnailThreeActive"><img src="images/image-product-3-thumbnail.jpg" alt="product 3 thumbnail"></figure>
+      <figure id="thumbnailFourActive"><img src="images/image-product-4-thumbnail.jpg" alt="product 4 thumbnail"></figure>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden flex-col items-start gap-10 w-2/3 h-full absolute z-50 p-5 bg-white max-w-[280px]">
+    <button id="closeButton"><img src="images/icon-close.svg" alt=""></button>
+    <nav class="flex flex-col items-start gap-5 [&>a]:text-veryDarkBlue [&>a]:font-bold">
+      <a href="#">Collections</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+  <header class="flex items-center lg:items-start justify-between p-5 lg:pb-0 lg:px-0 lg:border-b lg:border-grayishBlue">
+    <div class="flex gap-3 lg:gap-14 lg:h-[70px]">
+      <button id="menuButton" class="lg:hidden"><img src="images/icon-menu.svg" alt=""></button>
+      <figure><img src="images/logo.svg" alt="logo"></figure>
+      <nav id="desktopNav" class="hidden gap-5 [&>a]:text-darkGrayishBlue lg:flex">
+        <a href="#">Collections</a>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-8">
+      <button id="cart-button" class="w-[22px] h-[20px] bg-[url(images/icon-cart.svg)] bg-center bg-no-repeat bg-cover relative">
+        <span id="cartSpan" class="absolute -top-2 -right-2 text-xs text-white px-2 rounded-full bg-orange"></span>
+      </button>
+      <div id="cartModal" class="hidden absolute w-[340px] lg:w-[370px] min-h-[240px] bg-white top-28 left-1/2 -translate-x-1/2 lg:left-[80%] z-50 divide-y divide-grayishBlue flex-col rounded-xl shadow-2xl">
+        <h2 class="text-lg pl-5 pt-5 font-bold mb-8">Cart</h2>
+        <div id="cartContent" class="px-5 pt-5 pb-7 flex-grow flex flex-col items-center gap-5">
+          <h2 id="cartContentHeading" class="text-lg font-bold text-darkGrayishBlue text-center">Your cart is empty.</h2>
+          <div id="cartItem" class="hidden gap-5 justify-between w-full">
+            <figure class="w-14 h-14"><img class="rounded-md" src="images/image-product-1-thumbnail.jpg" alt=""></figure>
+            <div class="cartItemContent flex flex-col justify-between">
+              <h3 class="text-darkGrayishBlue">Fall Limited Edition Sneakers</h3>
+              <p id="price" class="text-darkGrayishBlue"></p>
+            </div>
+            <button id="deleteButton" class="w-[14px] h-[16px] bg-[url('images/icon-delete.svg')] bg-cover bg-center bg-no-repeat"></button>
+          </div>
+          <button id="checkoutButton" class="hidden w-full p-5 bg-orange rounded-xl text-white">Checkout</button>
+        </div>
+      </div>
+      <button class="w-12 h-12 bg-[url('images/image-avatar.png')] bg-cover bg-center bg-no-repeat rounded-full border-2 border-[transparent] hover:border-orange"></button>
+    </div>
+  </header>
+  <main class="lg:grid lg:grid-cols-2 lg:gap-6">
+    <div class="mobileLightbox relative lg:hidden">
+      <button id="nextButton" class="rightButton absolute top-1/2 right-5 -translate-y-1/2 w-11 h-11 bg-white rounded-full flex justify-center items-center"><img src="images/icon-next.svg" alt="next button"></button>
+      <img id="mobileLightboxImage" src="" alt="">
+      <button id="previousButton" class="leftButton absolute top-1/2 left-5 -translate-y-1/2 w-11 h-11 bg-white rounded-full flex justify-center items-center"><img src="images/icon-previous.svg" alt="previous button"></button>
+    </div>
+    <div class="desktopLightbox hidden lg:flex px-10 py-20 flex-col gap-7">
+      <figure id="mainThumbnail"><img id="desktopCurrentImage" src="images/image-product-1.jpg" class="rounded-xl" alt=""></figure>
+      <div id="thumbnails" class="flex gap-7 [&>figure]:border-[3px] [&>figure]:border-[transparent] [&>figure]:border-solid [&>figure]:cursor-pointer [&>figure>img]:rounded-xl">
+        <figure id="thumbnailOne" class="active"><img src="images/image-product-1-thumbnail.jpg" alt="product 1 thumbnail"></figure>
+        <figure id="thumbnailTwo"><img src="images/image-product-2-thumbnail.jpg"  alt="product 2 thumbnail"></figure>
+        <figure id="thumbnailThree"><img src="images/image-product-3-thumbnail.jpg" alt="product 3 thumbnail"></figure>
+        <figure id="thumbnailFour"><img src="images/image-product-4-thumbnail.jpg" alt="product 4 thumbnail"></figure>
+      </div>
+    </div>
+    <div class="content flex flex-col justify-center gap-5 p-5">
+      <span class="text-orange font-bold uppercase tracking-wider lg:tracking-widest text-sm lg:text-base">Sneaker Company</span>
+      <h1 class="text-veryDarkBlue font-bold text-3xl lg:text-5xl">Fall Limited Edition Sneakers</h1>
+      <p class="text-darkGrayishBlue">
+        These low-profile sneakers are your perfect casual wear companion. Featuring a 
+        durable rubber outer sole, they’ll withstand everything the weather can offer.
+      </p>
+      <div class="priceBox flex justify-between lg:justify-start lg:flex-col gap-2">
+        <div class="price text-veryDarkBlue font-bold text-3xl flex items-center gap-2">$125.00 <span class="bg-paleOrange text-orange inline-block px-2 py-1 rounded-lg text-base lg:text-xl">50%</span></div>
+        <h3 class="priceBefore text-grayishBlue font-bold line-through flex items-center">$250.00</h3>
+      </div>
+      <div class="flex gap-5 lg:flex-row flex-col">
+        <div class="bg-lightGrayishBlue flex items-center justify-between p-4 rounded-xl">
+          <button id="decreaseOne"><img class="hover:opacity-30" src="images/icon-minus.svg" alt=""></button>
+          <input id="numberInput" type="text" value="0" class="outline-none bg-lightGrayishBlue font-bold text-base w-24 h-8 text-center">
+          <button id="increaseOne"><img class="hover:opacity-30" src="images/icon-plus.svg" alt=""></button>
+        </div>
+        
+        <button id="addToCartButton" class="flex flex-grow gap-5 justify-center items-center p-4 bg-orange text-white rounded-xl hover:opacity-[0.65]">
+          <img class="brightness-[5]" src="images/icon-cart.svg" alt="">
+          Add to cart
+        </button>
+      </div>
+      
+    </div>
+  </main>
+  <div class="flex flex-col lg:flex-row lg:justify-evenly gap-2 p-5 text-xs lg:text-xl text-center [&>p>a]:text-orange border-t-2 border-grayishBlue mb-10 sm:mb-0">
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</p>
+    <p>Coded by <a href="https://www.frontendmentor.io/profile/AbdelrahmanShaalan">Abdelrahman Shaalan</a>.</p>
+  </div>
+  <script src="js/main.js"></script>
+  <script src="js/mobileLightBox.js"></script>
+  <script src="js/desktopLightBox.js"></script>
+  <script src="js/desktopLightBoxActive.js"></script>
+</body>
+</html>

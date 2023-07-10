@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bgBlack {
+    background-color: black;
+    opacity: 75%;
+}
+
+#desktopNav a:hover {
+    border-bottom: 5px hsl(26, 100%, 55%) solid;
+    color: hsl(220, 13%, 13%);
+}
+
+#addToCartButton {
+    box-shadow: 0px 15px 10px 0px hsl(25, 100%, 94%);
+}
+
+.active {
+    border-color: hsl(26, 100%, 55%) !important;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.active img {
+    border-radius: initial !important;
+}
+
+#thumbnails figure , #thumbnailsActive figure {
+    position: relative;
+}
+
+#thumbnails figure::before , #thumbnailsActive figure::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 12px;
+}
+
+#thumbnails figure:hover::before , #thumbnailsActive figure:hover::before {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#thumbnails figure.active::before , #thumbnailsActive figure.active::before {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
